@@ -24,7 +24,7 @@ from nltk.corpus import wordnet
 class NoteTakerApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Note Taker")
+        self.root.title("Note Taker 2.5")
         
         # Set initial window size and position
         self.root.geometry("1200x800+100+100")
@@ -99,13 +99,11 @@ class NoteTakerApp:
         self.linkedin_link.pack(side="left", padx=5)
         self.linkedin_link.bind("<Button-1>", lambda e: self.open_link("https://www.linkedin.com/in/arjunsharma1228/"))
 
-        self.github_link = tk.Label(social_links_frame, text="GitHub", font=("Arial", 12, "underline"), fg="white", bg="#333", cursor="hand2")
-        self.github_link.pack(side="left", padx=5)
-        self.github_link.bind("<Button-1>", lambda e: self.open_link("https://github.com/sharmaarjun1228"))
 
-        self.instagram_link = tk.Label(social_links_frame, text="Instagram", font=("Arial", 12, "underline"), fg="white", bg="#333", cursor="hand2")
+
+        self.instagram_link = tk.Label(social_links_frame, text="Invite Friend ", font=("Arial", 12, "underline"), fg="white", bg="#333", cursor="hand2")
         self.instagram_link.pack(side="left", padx=5)
-        self.instagram_link.bind("<Button-1>", lambda e: self.open_link("https://www.instagram.com/arjunsharma1228"))
+        self.instagram_link.bind("<Button-1>", lambda e: self.open_link("https://github.com/sharmaarjun1228/NoteTaker-for-Student"))
         
         # Create side navigation bar
         self.side_nav_frame = tk.Frame(self.main_frame, width=300, bg="#333")
@@ -245,7 +243,7 @@ class NoteTakerApp:
                     self.notes_text.insert("end", content)
                     self.file_path = file_path  # Store the file path
             except Exception as e:
-                messagebox.showerror("Error", f"An error occurred while opening the file: {str(e)}")
+                messagebox.showerror("Error", f"Dikkat hai yrr kuch open karne mai: {str(e)}")
 
     def save_file(self):
         if self.file_path:
@@ -260,7 +258,7 @@ class NoteTakerApp:
                 with open(file_path, "w") as f:
                     f.write(self.notes_text.get("1.0", "end-1c"))
                 self.file_path = file_path  # Update the file path
-                messagebox.showinfo("Success", "File saved successfully!")
+                messagebox.showinfo("Success", "Haa Bhaii...File saved successfully!")
             except Exception as e:
                 messagebox.showerror("Error", f"An error occurred while saving the file: {str(e)}")
 
@@ -303,7 +301,7 @@ class NoteTakerApp:
             try:
                 # Get document name, date, and user name
                 doc_name = self.doc_name_entry.get() if self.doc_name_entry.get() else "Untitled Document"
-                current_date = datetime.now().strftime("%Y-%m-%d")
+                current_date = datetime.now().strftime("%d-%m-%Y")
                 user_name = self.user_name_entry.get() if self.user_name_entry.get() else "Unknown User"
 
                 # Prepare content with document details
@@ -314,7 +312,7 @@ class NoteTakerApp:
                 with open(file_path, "w") as f:
                     f.write(content)
 
-                messagebox.showinfo("Success", "Notes exported as plain text successfully!")
+                messagebox.showinfo("Success", "Haa BHaii!! Notes exported as plain text successfully!")
             except Exception as e:
                 messagebox.showerror("Error", f"An error occurred: {str(e)}")
 
@@ -384,7 +382,7 @@ class NoteTakerApp:
         app_name_label = tk.Label(details_frame, text="Note Taker", font=("Arial", 16, "bold"))
         app_name_label.pack(pady=5)
 
-        version_label = tk.Label(details_frame, text=f"Version: 1.0")
+        version_label = tk.Label(details_frame, text=f"Version: 2.5")
         version_label.pack(pady=2)
 
         description_label = tk.Label(details_frame, text="A simple and elegant note-taking app\nto capture your thoughts and ideas.", wraplength=300, justify="center")
